@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/splashscreenFragment">
+
+    <fragment
+        android:id="@+id/splashscreenFragment"
+        android:name="com.example.revizor.screens.splash.SplashscreenFragment"
+        android:label="SplashscreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashscreenFragment_to_containerFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashscreenFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/containerFragment" />
+        <action
+            android:id="@+id/action_splashscreenFragment_to_authorizationFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashscreenFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/authorizationFragment" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashscreenFragment"
+            app:launchSingleTop="true"
+            android:id="@+id/action_splashscreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/containerFragment"
+        android:name="com.example.revizor.screens.intro.IntroFragment"
+        android:label="ContainerFragment"
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_container_intro">
+        <action
+            android:id="@+id/action_containerFragment_to_authorizationFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@layout/fragment_container_intro"
+            app:launchSingleTop="true"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.revizor.screens.authorization.AuthorizationFragment"
+        android:label="AuthorizationFragment"
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_authorization">
+        <action
+            android:id="@+id/action_authorizationFragment_to_homeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/authorizationFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.revizor.screens.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_review">
+        <action
+            android:id="@+id/action_homeFragment_to_authorizationFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/homeFragment"
+            app:destination="@id/authorizationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createReviewFragment"
+            app:destination="@id/createReviewFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_draftsFragment"
+            app:destination="@id/draftsFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_reviewDetailsFragment"
+            app:destination="@id/reviewDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.revizor.screens.registration.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_homeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/registrationFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createReviewFragment"
+        tools:layout="@layout/fragment_create_review"
+        android:name="com.example.revizor.screens.create_review.CreateReviewFragment"
+        android:label="CreateReviewFragment">
+        <action
+            android:id="@+id/action_createReviewFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        tools:layout="@layout/fragment_map"
+        android:name="com.example.revizor.screens.map.MapFragment"
+        android:label="MapFragment">
+        <action
+            android:id="@+id/action_mapFragment_to_createReviewFragment"
+            app:destination="@id/createReviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/draftsFragment"
+        tools:layout="@layout/fragment_drafts"
+        android:name="com.example.revizor.screens.drafts.DraftsFragment"
+        android:label="DraftsFragment">
+        <action
+            android:id="@+id/action_draftsFragment_to_draftDetailFragment"
+            app:destination="@id/draftDetailFragment"
+            app:popUpTo="@id/draftsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        tools:layout="@layout/fragment_settings"
+        android:name="com.example.revizor.screens.settings.SettingsFragment"
+        android:label="SettingsFragment">
+        <action
+            android:id="@+id/action_settingsFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/draftDetailFragment"
+        tools:layout="@layout/fragment_draft_details"
+        android:name="com.example.revizor.screens.drafts.draft_details.DraftDetailFragment"
+        android:label="DraftDetailFragment">
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewDetailsFragment"
+        tools:layout="@layout/fragment_review_details"
+        android:name="com.example.revizor.screens.review.ReviewDetailsFragment"
+        android:label="ReviewDetailsFragment">
+        <argument
+            android:name="objectId"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>
